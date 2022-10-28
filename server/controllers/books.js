@@ -4,7 +4,7 @@ import booksModel from '../models/books.js';
 /* GET books List page. READ */
 export function displayBookList(req, res, next) {
     // find all books in the books collection
-    booksModel.find((err, booksCollection) => {
+    booksModel.find(function(err, booksCollection){
         if (err) {
             console.error(err);
             res.end(err);
@@ -55,6 +55,7 @@ export function displayEditPage(req, res, next) {
 
 // POST - process the information passed from the details form and update the document
 export function processEditPage(req, res, next) {
+
      let id = req.params.id;
     
      let newBook = booksModel({
