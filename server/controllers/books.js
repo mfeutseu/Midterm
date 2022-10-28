@@ -54,28 +54,27 @@ export function displayEditPage(req, res, next) {
 }
 
 // POST - process the information passed from the details form and update the document
-export function processEditPage(req, res, next) {
+export function processEditPage(req, res, next){
 
-     let id = req.params.id;
+    let id = req.params.id;
     
-     let newBook = booksModel({
-         _id: req.body.id,
-         name: req.body.name,
-         author: req.body.author,
-         published: req.body.published,
-         description: req.body.description,
-         price: req.body.price
-     });
- 
-     booksModel.updateOne({_id: id }, newBook, (err, book) => {
-         if(err){
-             console.error(err);
-             res.end(err);
-         };
- 
-         res.redirect('/books/list')
-     } )
+    let newBook = booksModel({
+        _id: req.body.id,
+        name: req.body.name,
+        author: req.body.author,
+        published: req.body.published,
+        description: req.body.description,
+        price: req.body.price
+    });
 
+    booksModel.updateOne({_id: id }, newBook, (err, Book) => {
+        if(err){
+            console.error(err);
+            res.end(err);
+        };
+
+        res.redirect('/books/list')
+    } )
 }
 
 // GET - process the delete by user id
