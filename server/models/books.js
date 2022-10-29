@@ -6,7 +6,7 @@ const BookSchema = new Schema({
     author: String,
     published: String,
     description: String,
-    price: String
+    price: Number
 }, {
     timestamps: true,
     collection: 'books'
